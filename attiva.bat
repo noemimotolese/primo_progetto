@@ -1,0 +1,1 @@
+C:\Users\5Ci\Desktop\django\env\Scripts\activate
