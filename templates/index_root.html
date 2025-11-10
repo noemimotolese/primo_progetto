@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index root</title>
-</head>
-<body>
+{%extends "base.html"%}
+
+{%block title%} {{block.super}} | Index root {%endblock title%}
+
+{%block content%}
     <ol>
         <li><a href="/admin">Pannello admin</a></li>
         <li><a href="{% url 'prima_app:index'%}">Index Prima app</a></li>
         <li><a href="{% url 'seconda_app:index'%}">Index Seconda app</a></li>
     </ol>
-</body>
-</html>
+{%endblock content%}
