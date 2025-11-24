@@ -1,0 +1,18 @@
+{%extends "base.html"%}
+
+{%block title%} {{block.super}} | Media {%endblock title%}
+
+{%block content%}
+    <b>lista numeri = {{listaNum}}</b><br/>
+
+    {% if mediaN < 6 %}
+        <p style="color:red"><i>media minore di 6: {{mediaN}}</i></p>
+
+    {% elif mediaN > 6 %}
+        <p style="color:green"><i>media maggiore di 6: {{mediaN}}</i></p>
+    
+    {% else %}
+        <p style="color:black"><i>media uguale a 6: {{mediaN}}</i></p>
+    {% endif %}
+
+{%endblock content%}

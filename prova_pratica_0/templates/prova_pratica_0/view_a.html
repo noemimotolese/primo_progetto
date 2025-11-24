@@ -1,0 +1,22 @@
+{%extends "base.html"%}
+
+{%block title%} {{block.super}} | Somma {%endblock title%}
+
+{%block content%}
+    <b>num1 = {{num1}}</b><br/>
+    <b>num2 = {{num2}}</b><br/>
+
+    {% if num1 > num2 %}
+        <p style="color:green"><i>numero maggiore: {{num1}}</i></p>
+        <p style="color:red"><i>numero minore: {{num2}}</i></p>
+
+    {% elif num1 < num2 %}
+        <p style="color:green"><i>numero maggiore: {{num2}}</i></p>
+        <p style="color:red"><i>numero minore: {{num1}}</i></p>
+    
+    {% else %}
+        <p style="color:black"><i>i numeri sono uguali</i></p>
+    {% endif %}
+
+    <p><i>somma dei numeri: {{somma}}</i></p>
+{%endblock content%}
