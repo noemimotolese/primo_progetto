@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{%block title%} {{block.super}} | Index {%endblock title %}
+
+{%block content%}
+    <ol>
+        <li><a href ="{% url 'news:homepage'%}">Home page</a></li>
+        <li><a href ="{% url 'news:articolo_detail' 1%}">Articolo Detail</a></li>
+    </ol>
+{%endblock content%}

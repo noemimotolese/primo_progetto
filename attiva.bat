@@ -1,1 +1,1 @@
-C:\Users\5Ci\Desktop\django\env\Scripts\activate
+C:\Users\5Ci\Documents\django\env\Scripts\activate
