@@ -47,7 +47,7 @@ def homepage(request):
     giornalisti= Giornalista.objects.all()
     context= {"articoli": articoli, "giornalisti": giornalisti}
     print(context)
-    return render(request, "homepage.html", context)
+    return render(request, "news/homepage.html", context)
 
 def articoloDetailView(request, pk):
     #articolo= Articolo.objects.get(pk=pk)
