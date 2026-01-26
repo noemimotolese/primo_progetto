@@ -119,6 +119,43 @@ def queryBase(request):
     #15. tutti gli articoli che contengono una certa parola nel titolo:
     articoli_parola = Articolo.objects.filter(titolo__icontains='importante')
 
+    #16. Articoli pubblicati in un certo mese di un anno specifico:
+    #nota per poter modificare la data di un articolo togliere la proprietà auto_now = True al field data nel model
+    #poi dare i comandi makemigrations e migrate per applicare le modifiche al database
+    articolo_mese_anno = Articolo.objects.filter(data__month=1, data__year=2023)
+
+    #17. Giornalisti con almeno un articolo con più di 100 visualizzazioni:
+    giornaisti_con_articoli_popolari = Giornalista.objects.filter(articoli__visualizzazioni__gte=100).distinct()
+
+    """
+    spiegazione dettagliata:
+    Giornalista.objects: Inizia dalla classe del modello Giornalista.
+    .filter(articoli__visualizzazioni__gte=100): utilizza il metodo filter() per filtrare i giornalisti
+    in base al campo visualizzazioni nel modello Articolo. La notazione articoli__visualizzazioni indica
+    che si sta seguendo la relazione inversa dalla Classe Giornalista alla classe Articolo attraverso
+    il campo ForeignKey giornalista nel modello Articolo.
+    .distinct(): E' un metodo assicura che i risultati siano distinti, eliminando eventuali duplicati.
+    In questo caso, ciò è utile perchè un giornalista potrebbe essere associato a più articoli che soddisfano
+    il criterio, e vogliamo ottenere solo una volta ogni giornalista che ha scritto almeno un articolo popolare.
+    """
+    #Utilizzo di più condizioni di selezione
+    data = datetime.date(1990, 1, 1)
+    visualizzazioni = 50
+    #Per mettere in AND le condizioni separarle con la virgola
+    #18. Scrivi quali articoli vengono selezionati:
+    articoli_con_and = Articolo.objects.filter(giornalista__anno_di_nascita__gt=data, visualizzazioni__gte=visualizzazioni)
+
+    #Per mettere in OR le condizioni utilizzare operatore Q
+    from django.db.models import Q
+    #19. Scrivi quali articoli vengono selezionati:
+    articoli_con_or = Articolo.objects.filter(Q(giornalista__anno_di_nascita__gt=data) | Q(visualizzazioni__lte=visualizzazioni))
+
+    #Per il NOT (~) utilizzare operatore Q
+    #20. Scrivi qali articoli vengono selezionati:
+    articoli_con_not = Articolo.objects.filter(~Q(giornalista__anno_di_nascita__lt=data))
+    #oppure il metodo exclude
+    #articoli_con_not = Articolo.objects.exclude(giornalista__anno_di_nascita__lt=data)
+
     # Creare il dizionario context
     context = {
         'articoli_cognome': articoli_cognome,
@@ -135,7 +172,12 @@ def queryBase(request):
         'giornalista_anziano': giornalista_anziano,
         'ultimi': ultimi,
         'articoli_minime_visualizzazioni': articoli_minime_visualizzazioni,
-        'articoli_parola': articoli_parola
+        'articoli_parola': articoli_parola,
+        'articolo_mese_anno': articolo_mese_anno,
+        'giornaisti_con_articoli_popolari': giornaisti_con_articoli_popolari,
+        'articoli_con_and': articoli_con_and,
+        'articoli_con_or': articoli_con_or,
+        'articoli_con_not': articoli_con_not
     }
 
     return render(request, "news/query.html", context)

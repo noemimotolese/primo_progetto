@@ -110,4 +110,50 @@
             <li>Nessun articolo</li>
         {% endfor %}
     </ul>
+
+    <h2>16. Articoli pubblicati in un certo mese di un anno specifico</h2>
+    <ul>
+        {% for articolo in articoli_mese_anno %}
+            <li>{{ articolo.titolo }}</li>
+        {% empty %}
+            <li>Nessun articolo</li>
+        {% endfor %}
+    </ul>
+
+    <h2>17. Giornalisti con almeno un articolo con più di 100 visualizzazioni</h2>
+    <ul>
+        {% for giornalista in giornaisti_con_articoli_popolari %}
+            <li>{{ giornalista.nome }} {{ giornalista.cognome }}</li>
+        {% empty %}
+            <li>Nessun giornalista</li>
+        {% endfor %}
+    </ul>
+
+    <h2>18. Articoli del 1/1/1990 con 50 visualizzazioni</h2>
+    <ul>
+        {% for articolo in articoli_con_and %}
+            <li>{{ articolo.titolo }}</li>
+        {% empty %}
+            <li>Nessun articolo</li>
+        {% endfor %}
+    </ul>
+
+    <h2>19. Articoli del giornalista nato il 1/1/1990 o con 50 visualizzazioni</h2>
+    <ul>
+        {% for articolo in articoli_con_or %}
+            <li>{{ articolo.titolo }}</li>
+        {% empty %}
+            <li>Nessun articolo</li>
+        {% endfor %}
+    </ul>
+
+    <h2>20. Escludi gli articoli del giornalista nato il 1/1/1990</h2>
+    <ul>
+        {% for articolo in articoli_con_not %}
+            <li>{{ articolo.titolo }}</li>
+        {% empty %}
+            <li>Nessun articolo</li>
+        {% endfor %}
+    </ul>
+
 {%endblock content%}
