@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{%block title%} Giornalista Detail {%endblock title %}
+
+{%block content%}
+    <h4>Dettagli del giornalista: </h4>
+    <h3>{{ giornalista.nome }} {{ giornalista.cognome }}</h3>
+    <h3>Nato il: {{ giornalista.anno_di_nascita }}</h3>
+
+    <h4>Tutti i suoi articoli e visualizzazioni:</h4>
+    <ul>
+        {% for articolo in articoli_giornalista %}
+            <li>
+                <strong>Titolo:</strong> {{articolo.titolo }} <br>
+                <strong>Contenuto:</strong> {{articolo.contenuto }} <br>
+                <strong>Visualizzazioni:</strong> {{articolo.visualizzazioni }} <br>
+            </li>
+        {%empty%}
+            <li>Non ci sono articoli per questo giornalista
+        {% endfor %}
+{%endblock content%}

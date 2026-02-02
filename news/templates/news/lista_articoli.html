@@ -10,9 +10,12 @@
     {% endif %}
 
     {% for articolo in articoli %}
-        <p><strong>Titolo: </strong>{{ articolo.titolo }}</p>
+        <p><strong>Titolo: </strong>
+            <a href="/news/articoli/{{ articolo.id }}">{{ articolo.titolo }}</a>
+        </p>
         <p><strong>Contenuto: </strong>{{ articolo.contenuto }}</p>
-        <p><strong>Autore: </strong>{{ articolo.giornalista }}</p>
-        <br>
+        <p><strong>Autore: </strong>
+            <a href={% url 'news:giornalista_detail' articolo.giornalista.id %}>{{ articolo.giornalista }}</a></p>
+        <hr>
     {% endfor %}
 {%endblock content%}

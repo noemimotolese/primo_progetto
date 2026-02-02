@@ -5,8 +5,7 @@
 {%block content%}
     <ol>
         <li><a href ="{% url 'news:homepage'%}">Home page</a></li>
-        <li><a href ="{% url 'news:articolo_detail' 1%}">Articolo Detail</a></li>
-        <li><a href ="{% url 'news:lista_articoli_giornalista' 3%}">Lista Articoli</a></li>
+        <li><a href ="{% url 'news:lista_articoli'%}">Lista Articoli</a></li>
         <li><a href ="{% url 'news:query_base'%}">Query Base</a></li>
     </ol>
 {%endblock content%}
