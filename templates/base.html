@@ -84,6 +84,8 @@
                     <div class="dropdown-menu" aria-labelledby="newsDropdownMenuLink">
                         <a class="dropdown-item" href="{% url 'news:index'%}">Index</a>
                         <a class="dropdown-item" href="{% url 'news:homepage'%}">Homepage</a>
+                        <a class="dropdown-item" href="{% url 'news:query_base'%}">Query</a>
+                        <a class="dropdown-item" href="{% url 'news:lista_articoli'%}">Lista articoli</a>
                     </div>
                 </li>
 
@@ -95,6 +97,9 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="votiDropdownMenuLink">
                         <a class="dropdown-item" href="{% url 'voti:index'%}">Index</a>
+                        <a class="dropdown-item" href="{% url 'voti:materie'%}">Materie</a>
+                        <a class="dropdown-item" href="{% url 'voti:media'%}">Media</a>
+                        <a class="dropdown-item" href="{% url 'voti:max_min'%}">Max e Min</a>
                     </div>
                 </li>
             </ul>
