@@ -1,0 +1,34 @@
+{%extends "base.html"%}
+
+{%block title%} {{block.super}} | Voto massimo e minimo {%endblock title%}
+    
+{%block content%}
+    <h1>Verifiche:</h1>
+    <h3>Risultati</h3>
+    <ul>
+        <li>Voto minimo: {{min}}</li>
+        <li>Materie con voto minimo:
+            {% for materia in materiaMin %}
+                {{materia}} {% if not forloop.last %}, {% endif %} <!-- serve per non mettere la virgola alla fine (l'ultimo del loop)-->
+            {% endfor %}
+        </li>
+        <li>Studenti con voto minimo: 
+            {% for studente in nomeMin %}
+                {{studente}} {% if not forloop.last %}, {% endif %} 
+            {% endfor %}
+        </li>
+        
+        <li>Voto massimo: {{max}}</li>
+        <li>Materie con voto massimo: 
+            {% for materia in materiaMax %}
+                {{materia}} {% if not forloop.last %}, {% endif %} 
+            {% endfor %}
+        </li>
+        <li>Studenti con voto massimo: 
+            {% for studente in nomeMax %}
+                {{studente}} {% if not forloop.last %}, {% endif %} 
+            {% endfor %}
+        </li>
+    </ul>
+
+{%endblock content%}
