@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{%block title%} Lista Contatti {%endblock title %}
+
+{%block content%}
+    <style>
+        .tabella-contatti {
+            border-collapse: collapse; 
+            width: 100%; 
+        }
+
+        .tabella-contatti th, .tabella-contatti td {
+            border: 1px solid black;
+            padding: 10px; 
+            text-align: left; 
+        }
+
+        .tabella-contatti th {
+            background-color: #f2f2f2; 
+        }
+    </style>
+
+    <h4>Tutti i contatti:</h4>
+
+    <table class="tabella-contatti">
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Email</th>
+            <th>Contenuto</th>
+        </tr>
+
+        {% for contatto in contatti %}
+            <tr>
+                <td>{{ contatto.nome }}</td>
+                <td>{{ contatto.cognome }}</td>
+                <td>{{ contatto.email }}</td>
+                <td>{{ contatto.contenuto }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td><h5>Non ci sono contatti</h5></td>
+            </tr>
+        {% endfor %}
+    </table>
+{%endblock content%}
