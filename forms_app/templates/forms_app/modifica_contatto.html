@@ -1,0 +1,18 @@
+{% block content %}
+<div class="container">
+    <h1>Modifica contatto</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% comment %}
+        {% csrf_token %} è un tag di template utilizzato per proteggere le viste da attacchi CSRF (Cross-Site Request Forgery).
+        CSRF è un tipo di attacco che sfrutta la fiducia di un'applicazione web nell'autenticità delle richieste inviate
+        da un utente autenticato. Il tag genera un campo nascosto all'interno di un modulo HTML.
+        Questo campo contiene un token CSRF univoco che viene verificato dal server quando il modulo viene inviato.
+        Se il token CSRF non corrisponde a quello atteso dal server, la richiesta viene rifiutata.
+        {% endcomment %}
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-primary" value="SALVA MODIFICHE">
+    </form>
+</div>
+{% endblock content %}
+

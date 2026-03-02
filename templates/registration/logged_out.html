@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %} Logged out {% endblock title %}
+
+    {% block content %}
+    <p>Logout effettuato</p>
+    <a href="{% url 'login'%}">Clicca qui per rieffettuare il login</a>
+{% endblock %}
